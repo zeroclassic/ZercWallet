@@ -412,7 +412,7 @@ class LoadingScreen extends Component<Props, LoadingScreenState> {
         <div className={[cstyles.center, styles.loadingcontainer].join(' ')}>
           {!creatingZcashConf && (
             <div className={cstyles.verticalflex}>
-              <div style={{ marginTop: '100px' }}>
+              <div style={{ marginTop: '25px' }}>
                 <img src={Logo} width="200px;" alt="Logo" />
               </div>
               <div>{currentStatus}</div>
