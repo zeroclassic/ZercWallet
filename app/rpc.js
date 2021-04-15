@@ -202,7 +202,7 @@ export default class RPC {
     info.latestBlock = infoResult.result.blocks;
     info.connections = infoResult.result.connections;
     info.version = infoResult.result.version;
-    info.currencyName = info.testnet ? 'TAZ' : 'ZEC';
+    info.currencyName = info.testnet ? 'ZETC' : 'ZERC';
     info.zecPrice = null; // Setting this to null will copy over the existing price
     info.disconnected = false;
 
@@ -514,6 +514,7 @@ export default class RPC {
       retryCount = 0;
     }
 
+    /*
     try {
       const response = await new Promise((resolve, reject) => {
         axios('https://api.coincap.io/v2/rates/zcash', {
@@ -546,5 +547,7 @@ export default class RPC {
       }
       this.setupNextZecPriceRefresh(retryCount + 1, timeout);
     }
+    */
+    this.fnSetZecPrice(null);
   }
 }

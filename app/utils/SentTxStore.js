@@ -7,7 +7,7 @@ import { Transaction, TxDetail } from '../components/AppState';
 export default class SentTxStore {
   static locateSentTxStore() {
     if (os.platform() === 'darwin') {
-      return path.join(remote.app.getPath('appData'), 'Zcash', 'senttxstore.dat');
+      return path.join(remote.app.getPath('appData'), 'ZeroClassic', 'senttxstore.dat');
     }
 
     if (os.platform() === 'linux') {
@@ -15,13 +15,13 @@ export default class SentTxStore {
         remote.app.getPath('home'),
         '.local',
         'share',
-        'zec-qt-wallet-org',
-        'zec-qt-wallet',
+        'zeroclassic-org',
+        'zercwallet',
         'senttxstore.dat'
       );
     }
 
-    return path.join(remote.app.getPath('appData'), 'Zcash', 'senttxstore.dat');
+    return path.join(remote.app.getPath('appData'), 'zeroclassic', 'senttxstore.dat');
   }
 
   static async loadSentTxns(): Transaction[] {

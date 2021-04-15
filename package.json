@@ -1,8 +1,8 @@
 {
-  "name": "zecwallet",
-  "productName": "Zecwallet Fullnode",
+  "name": "zercwallet",
+  "productName": "ZercWallet Fullnode",
   "version": "1.4.6",
-  "description": "Zecwallet Fullnode (Electron version)",
+  "description": "ZercWallet Fullnode (Electron version)",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
     "build-dll": "cross-env NODE_ENV=development webpack --config ./configs/webpack.config.renderer.dev.dll.babel.js --colors",
@@ -53,8 +53,8 @@
     ]
   },
   "build": {
-    "productName": "Zecwallet Fullnode",
-    "appId": "co.zecwallet.fullnode",
+    "productName": "ZercWallet Fullnode",
+    "appId": "co.zercwallet.fullnode",
     "afterAllArtifactBuild": "./afterSignHook.js",
     "files": [
       "dist/",
@@ -122,7 +122,7 @@
         "libxtst6",
         "libnss3"
       ],
-      "artifactName": "Zecwallet_Fullnode_${version}_${arch}.deb"
+      "artifactName": "ZercWallet_Fullnode_${version}_${arch}.deb"
     },
     "linux": {
       "category": "Development",
@@ -141,15 +141,15 @@
         "AppImage"
       ],
       "desktop": {
-        "Name": "ZecWallet",
-        "Comment": "Full node and wallet for Zcash",
+        "Name": "ZercWallet",
+        "Comment": "Full node and wallet for ZeroClassic",
         "GenericName": "Wallet",
         "Type": "Application",
         "StartupNotify": true,
-        "StartupWMClass": "zecwallet",
+        "StartupWMClass": "zercwallet",
         "Categories": "Utility;",
-        "MimeType": "x-scheme-handler/zcash;",
-        "Keywords": "zecwallet;"
+        "MimeType": "x-scheme-handler/zeroclassic;",
+        "Keywords": "zercwallet;"
       }
     },
     "directories": {
@@ -159,7 +159,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adityapk00/zecwallet-electron.git"
+    "url": "git+https://github.com/zeroclassic/zercwallet-electron.git"
   },
   "author": {
     "name": "Aditya Kulkarni",

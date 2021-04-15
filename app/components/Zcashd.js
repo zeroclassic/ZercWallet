@@ -4,7 +4,7 @@ import { Info } from './AppState';
 import cstyles from './Common.module.css';
 import styles from './Zcashd.module.css';
 import ScrollPane from './ScrollPane';
-import Heart from '../assets/img/zcashdlogo.gif';
+import Heart from '../assets/img/zerclogo.gif';
 
 const DetailLine = ({ label, value }) => {
   return (
@@ -28,7 +28,7 @@ export default class Zcashd extends Component<Props> {
       return (
         <div>
           <div className={[cstyles.verticalflex, cstyles.center].join(' ')}>
-            <div style={{ marginTop: '100px' }}>
+            <div style={{ marginTop: '25px' }}>
               <i className={['fas', 'fa-times-circle'].join(' ')} style={{ fontSize: '96px', color: 'red' }} />
             </div>
             <div className={cstyles.margintoplarge}>Not Connected</div>

@@ -58,10 +58,10 @@ export default class MenuBuilder {
     const { mainWindow } = this;
 
     const subMenuAbout = {
-      label: 'Zecwallet Fullnode',
+      label: 'ZercWallet Fullnode',
       submenu: [
         {
-          label: 'About Zecwallet Fullnode',
+          label: 'About ZercWallet Fullnode',
           selector: 'orderFrontStandardAboutPanel:',
           click: () => {
             mainWindow.webContents.send('about');
@@ -150,7 +150,7 @@ export default class MenuBuilder {
           }
         },
         {
-          label: 'zcashd info',
+          label: 'zerod info',
           click: () => {
             this.mainWindow.webContents.send('zcashd');
           }
@@ -175,7 +175,7 @@ export default class MenuBuilder {
           }
         },
         {
-          label: 'zcashd info',
+          label: 'zerod info',
           click: () => {
             this.mainWindow.webContents.send('zcashd');
           }
@@ -207,13 +207,13 @@ export default class MenuBuilder {
         {
           label: 'Check github.com for updates',
           click() {
-            shell.openExternal('https://github.com/zcashfoundation/zecwallet/releases');
+            shell.openExternal('https://github.com/zeroclassic/zercwallet/releases');
           }
         },
         {
           label: 'File a bug...',
           click() {
-            shell.openExternal('https://github.com/zcashfoundation/zecwallet/issues');
+            shell.openExternal('https://github.com/zeroclassic/zercwallet/issues');
           }
         }
       ]
@@ -283,7 +283,7 @@ export default class MenuBuilder {
             }
           },
           {
-            label: 'zcashd info',
+            label: 'zerod info',
             click: () => {
               this.mainWindow.webContents.send('zcashd');
             }
@@ -294,7 +294,7 @@ export default class MenuBuilder {
         label: 'Help',
         submenu: [
           {
-            label: 'About Zecwallet Fullnode',
+            label: 'About ZercWallet Fullnode',
             click: () => {
               mainWindow.webContents.send('about');
             }
@@ -308,13 +308,13 @@ export default class MenuBuilder {
           {
             label: 'Check github.com for updates',
             click() {
-              shell.openExternal('https://github.com/zcashfoundation/zecwallet/releases');
+              shell.openExternal('https://github.com/zeroclassic/zercwallet/releases');
             }
           },
           {
             label: 'File a bug...',
             click() {
-              shell.openExternal('https://github.com/zcashfoundation/zecwallet/issues');
+              shell.openExternal('https://github.com/zeroclassic/zercwallet/issues');
             }
           }
         ]

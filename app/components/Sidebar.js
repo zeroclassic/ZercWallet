@@ -223,9 +223,9 @@ class Sidebar extends PureComponent<Props, State> {
     // About
     ipcRenderer.on('about', () => {
       openErrorModal(
-        'Zecwallet Fullnode',
+        'ZercWallet Fullnode',
         <div className={cstyles.verticalflex}>
-          <div className={cstyles.margintoplarge}>Zecwallet Fullnode v1.4.6</div>
+          <div className={cstyles.margintoplarge}>ZercWallet Fullnode v1.4.6</div>
           <div className={cstyles.margintoplarge}>Built with Electron. Copyright (c) 2018-2021, Aditya Kulkarni.</div>
           <div className={cstyles.margintoplarge}>
             The MIT License (MIT) Copyright (c) 2018-2021 Zecwallet

@@ -19,46 +19,46 @@ import cstyles from './Common.module.css';
 import styles from './LoadingScreen.module.css';
 import { NO_CONNECTION } from '../utils/utils';
 import Logo from '../assets/img/logobig.png';
-import zcashdlogo from '../assets/img/zcashdlogo.gif';
+import zcashdlogo from '../assets/img/zerclogo.gif';
 
 const locateZcashConfDir = () => {
   if (os.platform() === 'darwin') {
-    return path.join(remote.app.getPath('appData'), 'Zcash');
+    return path.join(remote.app.getPath('appData'), 'zeroclassic');
   }
 
   if (os.platform() === 'linux') {
-    return path.join(remote.app.getPath('home'), '.zcash');
+    return path.join(remote.app.getPath('home'), '.zeroclassic');
   }
 
-  return path.join(remote.app.getPath('appData'), 'Zcash');
+  return path.join(remote.app.getPath('appData'), 'zeroclassic');
 };
 
 const locateZcashConf = () => {
   if (os.platform() === 'darwin') {
-    return path.join(remote.app.getPath('appData'), 'Zcash', 'zcash.conf');
+    return path.join(remote.app.getPath('appData'), 'zeroclassic', 'zero.conf');
   }
 
   if (os.platform() === 'linux') {
-    return path.join(remote.app.getPath('home'), '.zcash', 'zcash.conf');
+    return path.join(remote.app.getPath('home'), '.zeroclassic', 'zero.conf');
   }
 
-  return path.join(remote.app.getPath('appData'), 'Zcash', 'zcash.conf');
+  return path.join(remote.app.getPath('appData'), 'zeroclassic', 'zero.conf');
 };
 
 const locateZcashd = () => {
   // const con = remote.getGlobal('console');
   // con.log(`App path = ${remote.app.getAppPath()}`);
-  // con.log(`Unified = ${path.join(remote.app.getAppPath(), '..', 'bin', 'mac', 'zcashd')}`);
+  // con.log(`Unified = ${path.join(remote.app.getAppPath(), '..', 'bin', 'mac', 'zerod')}`);
 
   if (os.platform() === 'darwin') {
-    return path.join(remote.app.getAppPath(), '..', 'bin', 'mac', 'zcashd');
+    return path.join(remote.app.getAppPath(), '..', 'bin', 'mac', 'zerod');
   }
 
   if (os.platform() === 'linux') {
-    return path.join(remote.app.getAppPath(), '..', 'bin', 'linux', 'zcashd');
+    return path.join(remote.app.getAppPath(), '..', 'bin', 'linux', 'zerod');
   }
 
-  return path.join(remote.app.getAppPath(), '..', 'bin', 'win', 'zcashd.exe');
+  return path.join(remote.app.getAppPath(), '..', 'bin', 'win', 'zerod.exe');
 };
 
 const locateZcashParamsDir = () => {
@@ -171,7 +171,9 @@ class LoadingScreen extends Component<Props, LoadingScreenState> {
     const params = [
       { name: 'sapling-output.params', url: 'https://params.zecwallet.co/params/sapling-output.params' },
       { name: 'sapling-spend.params', url: 'https://params.zecwallet.co/params/sapling-spend.params' },
-      { name: 'sprout-groth16.params', url: 'https://params.zecwallet.co/params/sprout-groth16.params' }
+      { name: 'sprout-groth16.params', url: 'https://params.zecwallet.co/params/sprout-groth16.params' },
+      { name: 'sprout-proving.key', url: 'https://params.zecwallet.co/params/sprout-proving.key' },
+      { name: 'sprout-verifying.key', url: 'https://params.zecwallet.co/params/verifying.key' }
     ];
 
     // eslint-disable-next-line no-plusplus
@@ -210,7 +212,7 @@ class LoadingScreen extends Component<Props, LoadingScreenState> {
       }
 
       this.setState({
-        currentStatus: `Could not create zcash.conf at ${zcashLocation}. This is a bug, please file an issue with Zecwallet`
+        currentStatus: `Could not create zero.conf at ${zcashLocation}. This is a bug, please file an issue with ZercWallet`
       });
       return;
     }
@@ -220,16 +222,18 @@ class LoadingScreen extends Component<Props, LoadingScreenState> {
     rpcConfig.username = confValues.rpcuser;
     rpcConfig.password = confValues.rpcpassword;
 
+    console.log(confValues);
+
     if (!rpcConfig.username || !rpcConfig.password) {
       this.setState({
         currentStatus: (
           <div>
-            <p>Your zcash.conf is missing a &quot;rpcuser&quot; or &quot;rpcpassword&quot;.</p>
+            <p>Your configuration is missing a &quot;rpcuser&quot; or &quot;rpcpassword&quot;.</p>
             <p>
               Please add a &quot;rpcuser=some_username&quot; and &quot;rpcpassword=some_password&quot; to your
-              zcash.conf to enable RPC access
+              configuration to enable RPC access
             </p>
-            <p>Your zcash.conf is located at {zcashLocation}</p>
+            <p>Your zero.conf is located at {zcashLocation}</p>
           </div>
         )
       });
@@ -238,7 +242,7 @@ class LoadingScreen extends Component<Props, LoadingScreenState> {
 
     const isTestnet = (confValues.testnet && confValues.testnet === '1') || false;
     const server = confValues.rpcbind || '127.0.0.1';
-    const port = confValues.rpcport || (isTestnet ? '18232' : '8232');
+    const port = confValues.rpcport || (isTestnet ? '23902' : '23901');
     rpcConfig.url = `http://${server}:${port}`;
 
     this.setState({ rpcConfig });
@@ -259,7 +263,7 @@ class LoadingScreen extends Component<Props, LoadingScreenState> {
 
     let confContent = '';
     confContent += 'server=1\n';
-    confContent += 'rpcuser=zecwallet\n';
+    confContent += 'rpcuser=zercwallet\n';
     confContent += `rpcpassword=${Math.random()
       .toString(36)
       .substring(2, 15)}\n`;
@@ -287,7 +291,7 @@ class LoadingScreen extends Component<Props, LoadingScreenState> {
         const { history } = this.props;
         const { rpcConfig } = this.state;
 
-        this.setState({ currentStatus: 'Waiting for zcashd to exit...' });
+        this.setState({ currentStatus: 'Waiting for zerod to exit...' });
         history.push(routes.LOADING);
 
         this.zcashd.on('close', () => {
@@ -312,7 +316,7 @@ class LoadingScreen extends Component<Props, LoadingScreenState> {
     const { zcashdSpawned } = this.state;
 
     if (zcashdSpawned) {
-      this.setState({ currentStatus: 'zcashd start failed' });
+      this.setState({ currentStatus: 'zerod start failed' });
       return;
     }
 
@@ -322,10 +326,10 @@ class LoadingScreen extends Component<Props, LoadingScreenState> {
     this.zcashd = spawn(program);
 
     this.setState({ zcashdSpawned: 1 });
-    this.setState({ currentStatus: 'zcashd starting...' });
+    this.setState({ currentStatus: 'zerod starting...' });
 
     this.zcashd.on('error', err => {
-      console.log(`zcashd start error, giving up. Error: ${err}`);
+      console.log(`zerod start error, giving up. Error: ${err}`);
       // Set that we tried to start zcashd, and failed
       this.setState({ zcashdSpawned: 1 });
 
@@ -364,7 +368,7 @@ class LoadingScreen extends Component<Props, LoadingScreenState> {
       }
 
       if (err === NO_CONNECTION && zcashdSpawned && getinfoRetryCount < 10) {
-        this.setState({ currentStatus: 'Waiting for zcashd to start...' });
+        this.setState({ currentStatus: 'Waiting for zerod to start...' });
         const inc = getinfoRetryCount + 1;
         this.setState({ getinfoRetryCount: inc });
         this.setupNextGetInfo();
@@ -408,7 +412,7 @@ class LoadingScreen extends Component<Props, LoadingScreenState> {
         <div className={[cstyles.center, styles.loadingcontainer].join(' ')}>
           {!creatingZcashConf && (
             <div className={cstyles.verticalflex}>
-              <div style={{ marginTop: '100px' }}>
+              <div style={{ marginTop: '25px' }}>
                 <img src={Logo} width="200px;" alt="Logo" />
               </div>
               <div>{currentStatus}</div>
