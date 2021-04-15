@@ -1,8 +1,8 @@
 {
   "name": "zecwallet",
-  "productName": "Zecwallet Fullnode",
+  "productName": "ZercWallet Fullnode",
   "version": "1.4.6",
-  "description": "Zecwallet Fullnode",
+  "description": "ZercWallet Fullnode",
   "main": "./main.prod.js",
   "author": {
     "name": "Aditya Kulkarni",

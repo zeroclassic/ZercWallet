@@ -42,10 +42,10 @@ const AddressBlock = ({
   const balance = addressBalance.balance || 0;
 
   const openAddress = () => {
-    if (currencyName === 'TAZ') {
-      shell.openExternal(`https://chain.so/address/ZECTEST/${address}`);
+    if (currencyName === 'ZETC') {
+      shell.openExternal(`https://insight-testnet.zeroclassic.org/address/${address}`);
     } else {
-      shell.openExternal(`https://zcha.in/accounts/${address}`);
+      shell.openExternal(`https://insight.zeroclassic.org/address/${address}`);
     }
   };
 

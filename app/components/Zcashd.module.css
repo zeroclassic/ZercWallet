@@ -7,7 +7,7 @@
 .imgcontainer {
   width: 100%;
   text-align: center;
-  margin-top: 10%;
+  margin-top: 10px;
 }
 
 .imgcontainer img {
@@ -18,7 +18,7 @@
   width: 50%;
   flex-direction: column;
   margin-left: 25%;
-  margin-top: 5%;
+  margin-top: 10px;
 }
 
 .detaillines {
