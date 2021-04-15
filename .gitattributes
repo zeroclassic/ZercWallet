@@ -4,8 +4,8 @@
 *.jpeg binary
 *.ico binary
 *.icns binary
-zcashd binary
-zcash-cli binary
-zcashd.exe binary
-zcash-cli.exe binary
+zerod binary
+zero-cli binary
+zerod.exe binary
+zero-cli.exe binary
 
