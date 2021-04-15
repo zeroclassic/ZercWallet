@@ -35,14 +35,14 @@ const locateZcashConfDir = () => {
 
 const locateZcashConf = () => {
   if (os.platform() === 'darwin') {
-    return path.join(remote.app.getPath('appData'), 'zeroclassic', 'zcash.conf');
+    return path.join(remote.app.getPath('appData'), 'zeroclassic', 'zero.conf');
   }
 
   if (os.platform() === 'linux') {
-    return path.join(remote.app.getPath('home'), '.zeroclassic', 'zcash.conf');
+    return path.join(remote.app.getPath('home'), '.zeroclassic', 'zero.conf');
   }
 
-  return path.join(remote.app.getPath('appData'), 'zeroclassic', 'zcash.conf');
+  return path.join(remote.app.getPath('appData'), 'zeroclassic', 'zero.conf');
 };
 
 const locateZcashd = () => {
@@ -221,6 +221,8 @@ class LoadingScreen extends Component<Props, LoadingScreenState> {
     const rpcConfig = new RPCConfig();
     rpcConfig.username = confValues.rpcuser;
     rpcConfig.password = confValues.rpcpassword;
+
+    console.log(confValues);
 
     if (!rpcConfig.username || !rpcConfig.password) {
       this.setState({
