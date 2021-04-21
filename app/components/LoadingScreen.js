@@ -291,12 +291,17 @@ class LoadingScreen extends Component<Props, LoadingScreenState> {
         const { history } = this.props;
         const { rpcConfig } = this.state;
 
+        console.log(history);
+
+        /*
         this.setState({ currentStatus: 'Waiting for zerod to exit...' });
         history.push(routes.LOADING);
+        */
 
         this.zcashd.on('close', () => {
           ipcRenderer.send('appquitdone');
         });
+
         this.zcashd.on('exit', () => {
           ipcRenderer.send('appquitdone');
         });

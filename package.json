@@ -1,7 +1,7 @@
 {
   "name": "zercwallet",
   "productName": "ZercWallet Fullnode",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "ZercWallet Fullnode (Electron version)",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
@@ -179,14 +179,10 @@
   },
   "keywords": [
     "electron",
-    "boilerplate",
     "react",
-    "redux",
     "flow",
     "sass",
-    "webpack",
-    "hot",
-    "reload"
+    "webpack"
   ],
   "homepage": "https://github.com/adityapk00/zecwallet-electron#readme",
   "jest": {
@@ -247,7 +243,7 @@
     "cross-spawn": "^7.0.1",
     "css-loader": "^3.3.2",
     "detect-port": "^1.3.0",
-    "electron": "7.2.4",
+    "electron": "9.4.0",
     "electron-builder": "^22.2.0",
     "electron-devtools-installer": "^2.2.4",
     "electron-notarize": "^0.2.1",
